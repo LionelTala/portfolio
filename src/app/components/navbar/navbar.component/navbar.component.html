@@ -1,0 +1,68 @@
+<!-- ======================================================= -->
+<!-- NAVBAR - IDENTIQUE AU STYLE DJANGO -->
+<!-- ======================================================= -->
+<nav class="fixed top-0 left-0 w-full z-50 py-3 transition-all duration-300 glass-nav">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+
+        <!-- Logo FL -->
+        <a class="navbar-brand" href="#accueil">FL</a>
+
+        <!-- Mobile controls -->
+        <div class="flex items-center gap-2 lg:hidden">
+
+            <!-- Langue - bascule instantanée -->
+            <button (click)="toggleLanguage()" class="lang-btn" type="button">
+                <i class="fas fa-globe mr-1"></i>
+                <span>{{ lang().toUpperCase() }}</span>
+            </button>
+
+            <!-- Theme toggle mobile -->
+            <button (click)="toggleTheme()" class="theme-toggle" aria-label="Changer le thème">
+                <i class="fas" [class.fa-moon]="portfolioService.currentTheme() === 'light'" [class.fa-sun]="portfolioService.currentTheme() === 'dark'"></i>
+            </button>
+
+            <!-- Mobile toggler -->
+            <button class="p-2 border-0" type="button" (click)="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="color: var(--p);"></i>
+            </button>
+        </div>
+
+        <!-- Desktop menu -->
+        <div class="hidden lg:flex items-center gap-1">
+            <ul class="flex items-center gap-1">
+                <li><a class="nav-link" [class.active]="isActive('accueil')" href="#accueil">{{ navItems.home }}</a></li>
+                <li><a class="nav-link" [class.active]="isActive('parcours')" href="#parcours">{{ navItems.parcours }}</a></li>
+                <li><a class="nav-link" [class.active]="isActive('competences')" href="#competences">{{ navItems.skills }}</a></li>
+                <li><a class="nav-link" [class.active]="isActive('projets')" href="#projets">{{ navItems.projects }}</a></li>
+                <li><a class="nav-link" [class.active]="isActive('contact')" href="#contact">{{ navItems.contact }}</a></li>
+            </ul>
+
+            <div class="flex items-center gap-2 ml-4">
+                <button (click)="toggleLanguage()" class="lang-btn" type="button">
+                    <i class="fas fa-globe mr-1"></i>
+                    <span>{{ lang().toUpperCase() }}</span>
+                </button>
+                <button (click)="toggleTheme()" class="theme-toggle" aria-label="Changer le thème">
+                    <i class="fas" [class.fa-moon]="portfolioService.currentTheme() === 'light'" [class.fa-sun]="portfolioService.currentTheme() === 'dark'"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div *ngIf="mobileMenuOpen" class="lg:hidden px-4 pt-4 pb-3 border-t mt-3 flex flex-col gap-3"
+         style="border-color: var(--brd); background-color: var(--nav);">
+        <a href="#accueil" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('accueil')" style="color: var(--txt);">{{ navItems.home }}</a>
+        <a href="#parcours" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('parcours')" style="color: var(--txt);">{{ navItems.parcours }}</a>
+        <a href="#competences" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('competences')" style="color: var(--txt);">{{ navItems.skills }}</a>
+        <a href="#projets" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('projets')" style="color: var(--txt);">{{ navItems.projects }}</a>
+        <a href="#contact" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('contact')" style="color: var(--txt);">{{ navItems.contact }}</a>
+        <div class="flex gap-2 pt-2 border-t" style="border-color: var(--brd);">
+            <button (click)="toggleLanguage(); closeMobileMenu()" class="px-3 py-1 rounded text-xs border" style="border-color: var(--brd); color: var(--txt);">
+                {{ lang() === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR' }}
+            </button>
+        </div>
+    </div>
+
+</nav>

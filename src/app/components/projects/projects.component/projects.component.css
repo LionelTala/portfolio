@@ -1,0 +1,119 @@
+/* ============================================================
+   PROJECTS.COMPONENT.CSS - STYLES SPÉCIFIQUES
+============================================================ */
+
+/* Les styles de .project-card, .project-image, .project-content,
+   et .tech-tag sont déjà définis dans styles.css */
+
+/* Ajustement pour le bouton "btn-outline-glow" en taille sm */
+.btn-outline-glow.btn-sm {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 640px) {
+    .project-content {
+        padding: 16px;
+    }
+    
+    .project-image {
+        min-height: 120px;
+        font-size: 2.5rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+
+    .project-card {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+/* Animation des cartes au survol */
+.project-card {
+    transition: all .35s ease;
+    background: var(--card);
+    border: 1px solid var(--brd);
+    border-radius: 24px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    border-color: rgba(14,165,233, .28);
+    box-shadow: var(--glow), var(--sh);
+    transform: translateY(-8px);
+}
+
+/* Project image - fond dégradé */
+.project-image {
+    min-height: 180px;
+    background: linear-gradient(135deg, rgba(14,165,233, .12), rgba(139,92,246, .12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    transition: background .35s ease;
+}
+
+.project-card:hover .project-image {
+    background: linear-gradient(135deg, rgba(14,165,233, .20), rgba(139,92,246, .20));
+}
+
+/* Contenu */
+.project-content {
+    padding: 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tags technologies */
+.tech-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    margin: 3px;
+    border-radius: 99px;
+    background: var(--ico-bg);
+    color: var(--p);
+    font-size: .75rem;
+    font-weight: 600;
+    border: 1px solid var(--ico-brd);
+    transition: all .2s ease;
+}
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+/* Bouton Voir le projet */
+.btn-outline-glow.btn-sm {
+    border: 2px solid var(--p) !important;
+    color: var(--p) !important;
+    border-radius: 99px;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: transparent !important;
+    transition: all .3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-outline-glow.btn-sm:hover {
+    background: var(--grad) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(14,165,233, .26);
+}

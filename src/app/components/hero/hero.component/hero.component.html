@@ -1,0 +1,80 @@
+<!-- ======================================================= -->
+<!-- HERO - SECTION D'ACCUEIL -->
+<!-- ======================================================= -->
+<section id="accueil" class="min-h-screen flex items-center pt-32 pb-16 relative overflow-hidden w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            <!-- Texte -->
+            <div class="lg:col-span-7">
+
+                <!-- Badge -->
+                <div class="badge-glow inline-flex items-center gap-2">
+                    <i class="fas fa-code"></i>
+                    <span>{{ heroTexts.badge }}</span>
+                </div>
+
+                <!-- Titre -->
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6" style="color: var(--heading);">
+                    {{ data.profile.name }}<br>
+                    <span class="grad-text">{{ data.profile.firstName }}</span>
+                </h1>
+
+                <!-- Typed.js Container -->
+                <div class="typed-container min-h-[60px] flex items-center mt-4">
+                    <span #typedElement class="typed-text text-xl sm:text-2xl lg:text-3xl"></span>
+                </div>
+
+                <!-- Description -->
+                <p class="text-base sm:text-lg max-w-xl leading-relaxed mt-5" style="color: var(--muted);">
+                    {{ heroTexts.desc }}
+                </p>
+
+                <!-- Boutons -->
+                <div class="flex flex-wrap gap-4 mt-10">
+                    <a href="#contact" class="btn-gradient">
+                        <i class="fas fa-paper-plane me-2"></i>
+                        {{ heroTexts.btnContact }}
+                    </a>
+
+                    <a href="assets/docs/cv-francis-tala.pdf" download="CV_SIKALI_TALA_Francis_Lionel.pdf"
+                       class="btn-outline-glow">
+                        <i class="fas fa-download me-2"></i>
+                        {{ heroTexts.btnCv }}
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links flex gap-3 mt-10">
+                    <a [href]="data.profile.github" target="_blank" class="social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a [href]="data.profile.linkedin" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a [href]="'mailto:' + data.profile.email" class="social-icon" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a [href]="'tel:' + data.profile.phone" class="social-icon" aria-label="Téléphone">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Photo -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 rounded-full opacity-20 blur-sm animate-float"
+                         style="background: conic-gradient(from 0deg, var(--p), var(--p2), var(--p3), var(--p));">
+                    </div>
+                    <img src="assets/images/photo.jpg"
+                         [alt]="data.profile.fullName"
+                         class="hero-photo relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full object-cover object-top border-4 shadow-2xl"
+                         style="border-color: rgba(14,165,233,.28);">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+/* ============================================================
+   APP.CSS - STYLES DU LAYOUT RACINE
+   Complète les styles globaux de styles.css
+============================================================ */
+
+/* Glass footer (comme Django) */
+.glass-footer {
+    background: var(--nav) !important;
+    border-top: 1px solid var(--brd);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: background .35s ease;
+}
+
+.glass-footer p {
+    color: var(--muted);
+    font-size: .875rem;
+    transition: color .3s ease;
+}
+
+.text-heading {
+    color: var(--heading);
+}
+
+.text-muted-foreground {
+    color: var(--muted);
+}
+
+/* Container responsive */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Mobile responsiveness pour le footer */
+@media (max-width: 768px) {
+    .glass-footer .flex-col {
+        gap: 1rem;
+    }
+}

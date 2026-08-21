@@ -1,0 +1,26 @@
+/* ============================================================
+   PARCOURS.COMPONENT.CSS - STYLES SPÉCIFIQUES
+============================================================ */
+
+/* Les styles de .section-title, .custom-card et .timeline-year
+   sont déjà définis dans styles.css */
+
+/* Ajustements supplémentaires pour la section parcours */
+.section-alt {
+    background: var(--bg2);
+    border-top: 1px solid var(--brd);
+    border-bottom: 1px solid var(--brd);
+    transition: background .35s ease;
+}
+
+/* Animation au survol des cartes */
+.custom-card {
+    transition: all .35s ease;
+}
+
+.custom-card:hover {
+    background: var(--card-h);
+    border-color: rgba(14,165,233, .25);
+    transform: translateY(-6px);
+    box-shadow: var(--glow), var(--sh);
+}

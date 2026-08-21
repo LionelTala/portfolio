@@ -1,0 +1,43 @@
+/* ============================================================
+   SKILLS.COMPONENT.CSS - STYLES SPÉCIFIQUES
+============================================================ */
+
+/* Les styles de .skill-info, .skill-name, .skill-pct,
+   .skill-bar et .skill-progress sont déjà définis dans styles.css */
+
+/* Animation au survol des cartes */
+.custom-card {
+    transition: all .35s ease;
+    border-radius: 20px;
+    border: 1px solid var(--brd);
+}
+
+.custom-card:hover {
+    background: var(--card-h);
+    border-color: rgba(14,165,233, .25);
+    transform: translateY(-6px);
+    box-shadow: var(--glow), var(--sh);
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 640px) {
+    .custom-card {
+        padding: 16px !important;
+    }
+    .skill-name {
+        font-size: 0.8rem;
+    }
+    .skill-pct {
+        font-size: 0.7rem;
+        padding: 1px 8px;
+    }
+}
+
+/* Animation au scroll des barres (GSAP gère via data-width) */
+.skill-progress {
+    height: 7px;
+    background: var(--grad);
+    border-radius: 99px;
+    transition: width 1.4s cubic-bezier(.4, 0, .2, 1);
+    width: 0%;
+}

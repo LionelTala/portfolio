@@ -1,0 +1,138 @@
+<!-- ======================================================= -->
+<!-- CONTACT - IDENTIQUE À LA VERSION DJANGO -->
+<!-- ======================================================= -->
+<section id="contact" class="py-20 w-full overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+        <h2 class="section-title text-center w-full">
+            <i class="fas fa-envelope text-primary me-2"></i>
+            {{ sectionTitle }}
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+
+            <!-- Infos de contact -->
+            <div class="lg:col-span-4" data-aos="fade-right">
+                <h4 class="text-xl font-bold mb-4" style="font-family: 'Syne', sans-serif; color: var(--heading);">
+                    Parlons de votre projet
+                </h4>
+                <p class="text-sm mb-6" style="color: var(--muted);">
+                    {{ contactTexts.description }}
+                </p>
+
+                <!-- Email -->
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.email }}</div>
+                        <a [href]="'mailto:' + data.profile.email" class="text-sm font-medium" style="color: var(--txt);">
+                            {{ data.profile.email }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Téléphone -->
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.phone }}</div>
+                        <a [href]="'tel:' + data.profile.phone" class="text-sm font-medium" style="color: var(--txt);">
+                            {{ data.profile.phone }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.location }}</div>
+                        <span class="text-sm font-medium" style="color: var(--txt);">{{ data.profile.location }}</span>
+                    </div>
+                </div>
+
+                <!-- Social links -->
+                <div class="flex gap-3 pt-4">
+                    <a [href]="data.profile.github" target="_blank" class="social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a [href]="data.profile.linkedin" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Formulaire -->
+            <div class="lg:col-span-8" data-aos="fade-left">
+                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form" style="background-color: var(--card); border-color: var(--brd);">
+                    
+                    <!-- Messages de succès/erreur -->
+                    @if (submitSuccess) {
+                        <div class="mb-4 p-4 rounded-xl text-sm font-medium" style="background-color: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e;">
+                            {{ contactTexts.successMessage }}
+                        </div>
+                    }
+                    @if (submitError) {
+                        <div class="mb-4 p-4 rounded-xl text-sm font-medium" style="background-color: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444;">
+                            {{ contactTexts.errorMessage }}
+                        </div>
+                    }
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" 
+                               name="nom"
+                               [(ngModel)]="formData.nom"
+                               [placeholder]="contactTexts.namePlaceholder"
+                               required
+                               class="form-control"
+                               style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
+                        <input type="email"
+                               name="email"
+                               [(ngModel)]="formData.email"
+                               [placeholder]="contactTexts.emailPlaceholder"
+                               required
+                               email
+                               class="form-control"
+                               style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
+                    </div>
+                    
+                    <input type="text"
+                           name="sujet"
+                           [(ngModel)]="formData.sujet"
+                           [placeholder]="contactTexts.subjectPlaceholder"
+                           class="form-control"
+                           style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
+
+                    <textarea name="message"
+                              rows="5"
+                              [(ngModel)]="formData.message"
+                              [placeholder]="contactTexts.messagePlaceholder"
+                              required
+                              class="form-control"
+                              style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);"></textarea>
+
+                    <button type="submit" 
+                            class="btn-gradient w-full justify-center py-3"
+                            [disabled]="isSubmitting"
+                            style="opacity: {{ isSubmitting ? 0.7 : 1 }};">
+                        @if (isSubmitting) {
+                            <i class="fas fa-spinner fa-spin me-2"></i>
+                            {{ lang() === 'fr' ? 'Envoi en cours...' : 'Sending...' }}
+                        } @else {
+                            <i class="fas fa-paper-plane me-2"></i>
+                            {{ contactTexts.submitButton }}
+                        }
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>

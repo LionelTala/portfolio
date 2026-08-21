@@ -1,0 +1,45 @@
+<!-- ======================================================= -->
+<!-- PARCOURS - IDENTIQUE À LA VERSION DJANGO -->
+<!-- ======================================================= -->
+<section id="parcours" class="py-20 section-alt w-full overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+        <h2 class="section-title text-center w-full">
+            <i class="fas fa-graduation-cap text-primary me-2"></i>
+            {{ sectionTitle }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            @for (item of parcoursList; track item.title; let i = $index) {
+                <div class="custom-card p-6 md:p-8 hover:shadow-xl transition-all duration-300 w-full"
+                     data-aos="fade-up" 
+                     [attr.data-aos-delay]="(i + 1) * 100"
+                     style="background-color: var(--card); border-color: var(--brd);">
+
+                    <!-- Badge période -->
+                    <span class="timeline-year">
+                        {{ item.period }}
+                    </span>
+
+                    <!-- Titre -->
+                    <h4 class="text-xl font-bold mt-2 mb-1" style="color: var(--heading);">
+                        {{ item.title }}
+                    </h4>
+
+                    <!-- Institution -->
+                    <p class="text-sm font-medium mb-3" style="color: var(--p);">
+                        <i class="fas fa-university me-2"></i>
+                        {{ item.institution }}
+                    </p>
+
+                    <!-- Description (bilingue) -->
+                    <p class="text-sm leading-relaxed" style="color: var(--muted);">
+                        {{ getDescription(item) }}
+                    </p>
+
+                </div>
+            }
+        </div>
+
+    </div>
+</section>

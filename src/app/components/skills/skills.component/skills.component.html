@@ -1,0 +1,39 @@
+<!-- ======================================================= -->
+<!-- COMPÉTENCES - IDENTIQUE À LA VERSION DJANGO -->
+<!-- ======================================================= -->
+<section id="competences" class="py-20 w-full overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+        <h2 class="section-title text-center w-full">
+            <i class="fas fa-cogs text-primary me-2"></i>
+            {{ sectionTitle }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            @for (skill of skillsList; track skill.name; let i = $index) {
+                <div class="custom-card p-6 hover:shadow-xl transition-all duration-300 w-full"
+                     data-aos="fade-up" 
+                     [attr.data-aos-delay]="(i + 1) * 50"
+                     style="background-color: var(--card); border-color: var(--brd);">
+
+                    <div class="skill-info">
+                        <span class="skill-name">
+                            <i [class]="skill.icon"></i>
+                            {{ skill.name }}
+                        </span>
+                        <span class="skill-pct">{{ skill.level }}%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress"
+                             [attr.data-width]="skill.level + '%'"
+                             style="width: 0%;">
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+    </div>
+</section>

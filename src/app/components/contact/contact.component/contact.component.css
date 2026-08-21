@@ -1,0 +1,71 @@
+/* ============================================================
+   CONTACT.COMPONENT.CSS - STYLES SPÉCIFIQUES
+============================================================ */
+
+/* Les styles de .contact-info-item, .contact-info-icon,
+   .contact-form, .form-control et .btn-gradient sont déjà définis dans styles.css */
+
+/* Ajustement pour les labels masqués dans la version Django */
+.contact-form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--brd);
+    transition: all .3s ease;
+    margin-bottom: 12px;
+    background-color: rgba(14,165,233,.04) !important;
+    color: var(--txt) !important;
+}
+
+.contact-form .form-control::placeholder {
+    color: var(--muted);
+}
+
+.contact-form .form-control:focus {
+    outline: none !important;
+    border-color: var(--p) !important;
+    box-shadow: 0 0 0 3px rgba(14,165,233, .12) !important;
+    background-color: var(--card) !important;
+}
+
+/* Ajustement responsive */
+@media (max-width: 640px) {
+    .contact-form {
+        padding: 20px 16px;
+    }
+    
+    .contact-info-item {
+        padding: 12px 14px;
+    }
+
+    .contact-info-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation des messages de confirmation */
+.contact-form .alert {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bouton désactivé */
+.btn-gradient:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}

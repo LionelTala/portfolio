@@ -1,0 +1,150 @@
+/* ============================================================
+   NAVBAR.COMPONENT.CSS - STYLES SPÉCIFIQUES
+============================================================ */
+
+.navbar-brand {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.glass-nav {
+    background: var(--nav);
+    border-bottom: 1px solid var(--brd);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    transition: background .35s ease, padding .3s ease, box-shadow .3s ease, border-color .35s ease;
+}
+
+.glass-nav.scrolled {
+    padding: 9px 0;
+    box-shadow: var(--sh);
+}
+
+/* ✅ Style des liens de navigation */
+.nav-link {
+    font-weight: 600;
+    font-size: .87rem;
+    color: var(--txt);
+    margin: 0 6px;
+    padding: 6px 2px;
+    position: relative;
+    text-decoration: none;
+    transition: color .25s ease;
+    cursor: pointer;
+}
+
+/* ✅ Soulignement au survol */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    border-radius: 99px;
+    background: var(--grad);
+    transition: width .3s ease;
+}
+
+/* ✅ Lien actif ou survol */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--p);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 90%;
+}
+
+/* ✅ Mobile aussi */
+.mobile-nav-link.active {
+    color: var(--p) !important;
+}
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--brd);
+    color: var(--heading);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--p);
+    color: var(--p);
+    transform: rotate(22deg) scale(1.1);
+    box-shadow: 0 0 18px rgba(14,165,233,.28);
+}
+
+.theme-toggle i {
+    font-size: .95rem;
+    pointer-events: none;
+}
+
+.lang-btn {
+    background: var(--card);
+    border: 1px solid var(--brd);
+    color: var(--txt);
+    border-radius: 99px;
+    padding: 7px 15px;
+    font-size: .82rem;
+    font-weight: 600;
+    transition: all .25s ease;
+    cursor: pointer;
+}
+
+.lang-btn:hover {
+    border-color: var(--p);
+    color: var(--p);
+}
+
+.dropdown-item {
+    color: var(--txt);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 500;
+    transition: all .2s ease;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background: var(--grad);
+    color: white;
+}
+
+/* Responsive mobile */
+@media (max-width: 640px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+    
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .lang-btn {
+        padding: 5px 12px;
+        font-size: .75rem;
+    }
+}

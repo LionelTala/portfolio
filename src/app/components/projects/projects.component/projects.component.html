@@ -1,0 +1,63 @@
+<!-- ======================================================= -->
+<!-- PROJETS - IDENTIQUE À LA VERSION DJANGO -->
+<!-- ======================================================= -->
+<section id="projets" class="py-20 section-alt w-full overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+        <h2 class="section-title text-center w-full">
+            <i class="fas fa-laptop-code text-primary me-2"></i>
+            {{ sectionTitle }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+            @for (project of projectsList; track project.title; let i = $index) {
+                <div class="project-card w-full"
+                     data-aos="fade-up"
+                     [attr.data-aos-delay]="(i % 3) * 120">
+                    
+                    <!-- Project Image (emoji) -->
+                    <div class="project-image">
+                        {{ project.emoji }}
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="project-content">
+
+                        <h4 class="text-center font-bold text-lg mb-2" style="color: var(--heading);">
+                            {{ project.title }}
+                        </h4>
+
+                        <p class="text-center text-sm leading-relaxed" style="color: var(--muted);">
+                            {{ getDescription(project) }}
+                        </p>
+
+                        <!-- Technologies -->
+                        @if (project.technologies && project.technologies.length > 0) {
+                            <div class="flex flex-wrap justify-center gap-1 my-3">
+                                @for (tech of project.technologies; track tech) {
+                                    <span class="tech-tag">{{ tech }}</span>
+                                }
+                            </div>
+                        }
+
+                        <!-- Link -->
+                        @if (project.url) {
+                            <div class="text-center mt-auto pt-2">
+                                <a [href]="project.url"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn-outline-glow btn-sm inline-flex items-center gap-1 text-sm px-4 py-2">
+                                    <i class="fas fa-external-link-alt me-1"></i>
+                                    {{ getViewButtonText() }}
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
