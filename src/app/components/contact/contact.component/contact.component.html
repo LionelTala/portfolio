@@ -1,22 +1,22 @@
 <!-- ======================================================= -->
 <!-- CONTACT - IDENTIQUE À LA VERSION DJANGO -->
 <!-- ======================================================= -->
-<section id="contact" class="py-20 w-full overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+<section id="contact" class="py-5 py-lg-6">
+    <div class="container">
 
-        <h2 class="section-title text-center w-full">
-            <i class="fas fa-envelope text-primary me-2"></i>
+        <h2 class="section-title text-center">
+            <i class="fas fa-envelope me-2" style="color: var(--p);"></i>
             {{ sectionTitle }}
         </h2>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+        <div class="row g-4 g-lg-5">
 
-            <!-- Infos de contact -->
-            <div class="lg:col-span-4" data-aos="fade-right">
-                <h4 class="text-xl font-bold mb-4" style="font-family: 'Syne', sans-serif; color: var(--heading);">
-                    Parlons de votre projet
+            <!-- Colonne Infos de contact -->
+            <div class="col-lg-4" data-aos="fade-right">
+                <h4 class="fw-bold mb-4" style="color: var(--heading);">
+                    {{ contactTexts.title }}
                 </h4>
-                <p class="text-sm mb-6" style="color: var(--muted);">
+                <p class="mb-4" style="font-size: 0.95rem; color: var(--muted);">
                     {{ contactTexts.description }}
                 </p>
 
@@ -26,8 +26,10 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div>
-                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.email }}</div>
-                        <a [href]="'mailto:' + data.profile.email" class="text-sm font-medium" style="color: var(--txt);">
+                        <div class="text-uppercase fw-medium" style="font-size: 0.78rem; letter-spacing: 0.06em; color: var(--muted);">
+                            {{ contactTexts.email }}
+                        </div>
+                        <a [href]="'mailto:' + data.profile.email" class="fw-medium" style="font-size: 0.9rem; color: var(--txt);">
                             {{ data.profile.email }}
                         </a>
                     </div>
@@ -39,8 +41,10 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <div>
-                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.phone }}</div>
-                        <a [href]="'tel:' + data.profile.phone" class="text-sm font-medium" style="color: var(--txt);">
+                        <div class="text-uppercase fw-medium" style="font-size: 0.78rem; letter-spacing: 0.06em; color: var(--muted);">
+                            {{ contactTexts.phone }}
+                        </div>
+                        <a [href]="'tel:' + data.profile.phone" class="fw-medium" style="font-size: 0.9rem; color: var(--txt);">
                             {{ data.profile.phone }}
                         </a>
                     </div>
@@ -52,75 +56,94 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
-                        <div class="text-xs uppercase tracking-wider font-medium" style="color: var(--muted);">{{ contactTexts.location }}</div>
-                        <span class="text-sm font-medium" style="color: var(--txt);">{{ data.profile.location }}</span>
+                        <div class="text-uppercase fw-medium" style="font-size: 0.78rem; letter-spacing: 0.06em; color: var(--muted);">
+                            {{ contactTexts.location }}
+                        </div>
+                        <span class="fw-medium" style="font-size: 0.9rem; color: var(--txt);">
+                            {{ data.profile.location }}
+                        </span>
                     </div>
                 </div>
 
-                <!-- Social links -->
-                <div class="flex gap-3 pt-4">
-                    <a [href]="data.profile.github" target="_blank" class="social-icon" aria-label="GitHub">
+                <!-- Liens sociaux -->
+                <div class="social-links mt-4">
+                    <a [href]="data.profile.github" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a [href]="data.profile.linkedin" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <a [href]="data.profile.linkedin" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- Formulaire -->
-            <div class="lg:col-span-8" data-aos="fade-left">
-                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form" style="background-color: var(--card); border-color: var(--brd);">
+            <!-- Colonne Formulaire -->
+            <div class="col-lg-8" data-aos="fade-left">
+                
+                <!-- Le #contactForm="ngForm" est essentiel pour la validation Angular -->
+                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
                     
-                    <!-- Messages de succès/erreur -->
+                    <!-- Message de Succès -->
                     @if (submitSuccess) {
-                        <div class="mb-4 p-4 rounded-xl text-sm font-medium" style="background-color: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e;">
+                        <div class="mb-4 p-4 rounded-3 fw-medium" style="background-color: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid #22c55e; font-size: 0.9rem;">
                             {{ contactTexts.successMessage }}
                         </div>
                     }
+                    
+                    <!-- Message d'Erreur -->
                     @if (submitError) {
-                        <div class="mb-4 p-4 rounded-xl text-sm font-medium" style="background-color: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444;">
+                        <div class="mb-4 p-4 rounded-3 fw-medium" style="background-color: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; font-size: 0.9rem;">
                             {{ contactTexts.errorMessage }}
                         </div>
                     }
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" 
-                               name="nom"
-                               [(ngModel)]="formData.nom"
-                               [placeholder]="contactTexts.namePlaceholder"
-                               required
-                               class="form-control"
-                               style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
-                        <input type="email"
-                               name="email"
-                               [(ngModel)]="formData.email"
-                               [placeholder]="contactTexts.emailPlaceholder"
-                               required
-                               email
-                               class="form-control"
-                               style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
+                    <!-- Nom et Email (Ligne du haut) -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <input type="text" 
+                                   name="nom"
+                                   [(ngModel)]="formData.nom"
+                                   [placeholder]="contactTexts.namePlaceholder"
+                                   required
+                                   #nomModel="ngModel"
+                                   class="form-control"
+                                   [class.is-invalid]="nomModel.invalid && nomModel.touched">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email"
+                                   name="email"
+                                   [(ngModel)]="formData.email"
+                                   [placeholder]="contactTexts.emailPlaceholder"
+                                   required
+                                   email
+                                   #emailModel="ngModel"
+                                   class="form-control"
+                                   [class.is-invalid]="emailModel.invalid && emailModel.touched">
+                        </div>
                     </div>
                     
+                    <!-- Sujet -->
                     <input type="text"
                            name="sujet"
                            [(ngModel)]="formData.sujet"
                            [placeholder]="contactTexts.subjectPlaceholder"
-                           class="form-control"
-                           style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);">
+                           class="form-control mb-3">
 
+                    <!-- Message -->
                     <textarea name="message"
                               rows="5"
                               [(ngModel)]="formData.message"
                               [placeholder]="contactTexts.messagePlaceholder"
                               required
-                              class="form-control"
-                              style="background-color: rgba(14,165,233,.04); border-color: var(--brd); color: var(--txt);"></textarea>
+                              #messageModel="ngModel"
+                              class="form-control mb-3"
+                              [class.is-invalid]="messageModel.invalid && messageModel.touched"></textarea>
 
+                    <!-- Bouton d'envoi -->
+                    <!-- Désactivé si le formulaire est invalide ou en cours d'envoi -->
                     <button type="submit" 
-                            class="btn-gradient w-full justify-center py-3"
-                            [disabled]="isSubmitting"
-                            style="opacity: {{ isSubmitting ? 0.7 : 1 }};">
+                            class="btn btn-gradient w-100 justify-content-center py-3"
+                            [disabled]="isSubmitting || contactForm.invalid"
+                            [style.opacity]="isSubmitting ? 0.7 : 1">
                         @if (isSubmitting) {
                             <i class="fas fa-spinner fa-spin me-2"></i>
                             {{ lang() === 'fr' ? 'Envoi en cours...' : 'Sending...' }}
@@ -133,6 +156,5 @@
             </div>
 
         </div>
-
     </div>
 </section>

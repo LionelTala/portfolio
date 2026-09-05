@@ -1,150 +1,95 @@
 /* ============================================================
-   NAVBAR.COMPONENT.CSS - STYLES SPÉCIFIQUES
+   NAVBAR.COMPONENT.CSS
 ============================================================ */
 
-.navbar-brand {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 1.7rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    background: var(--grad);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-decoration: none;
-    cursor: pointer;
+/* Transition fluide de la navbar (remplace transition-all duration-300) */
+nav.glass-nav {
+    transition: all 0.3s ease;
+    z-index: 1050;
 }
 
-.glass-nav {
-    background: var(--nav);
-    border-bottom: 1px solid var(--brd);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    transition: background .35s ease, padding .3s ease, box-shadow .3s ease, border-color .35s ease;
-}
-
-.glass-nav.scrolled {
-    padding: 9px 0;
-    box-shadow: var(--sh);
-}
-
-/* ✅ Style des liens de navigation */
-.nav-link {
+/* Boutons Langue et Thème (remplace .lang-btn et .theme-toggle) */
+.lang-btn,
+.theme-toggle {
+    background: var(--card) !important;
+    border: 1px solid var(--brd) !important;
+    color: var(--txt) !important;
+    border-radius: 99px;
+    padding: 7px 15px;
+    font-size: 0.82rem;
     font-weight: 600;
-    font-size: .87rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.lang-btn:hover,
+.theme-toggle:hover {
+    border-color: var(--p) !important;
+    color: var(--p) !important;
+    transform: rotate(22deg) scale(1.1);
+    box-shadow: 0 0 18px rgba(14,165,233,0.28) !important;
+}
+
+/* Liens du menu mobile */
+.nav-link-mobile {
+    font-weight: 600;
+    font-size: 0.87rem;
     color: var(--txt);
-    margin: 0 6px;
+    text-decoration: none;
     padding: 6px 2px;
     position: relative;
-    text-decoration: none;
-    transition: color .25s ease;
-    cursor: pointer;
+    transition: color 0.25s ease;
+    display: block;
 }
 
-/* ✅ Soulignement au survol */
-.nav-link::after {
+.nav-link-mobile.active {
+    color: var(--p);
+}
+
+.nav-link-mobile.active::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: -1px;
     transform: translateX(-50%);
-    width: 0;
+    width: 90%;
     height: 2px;
     border-radius: 99px;
     background: var(--grad);
-    transition: width .3s ease;
 }
 
-/* ✅ Lien actif ou survol */
-.nav-link:hover,
-.nav-link.active {
-    color: var(--p);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 90%;
-}
-
-/* ✅ Mobile aussi */
-.mobile-nav-link.active {
-    color: var(--p) !important;
-}
-
-.theme-toggle {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--card);
+/* Bouton de switch de langue dans le menu mobile */
+.lang-switch-btn {
+    background: transparent;
     border: 1px solid var(--brd);
-    color: var(--heading);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-
-.theme-toggle:hover {
-    border-color: var(--p);
-    color: var(--p);
-    transform: rotate(22deg) scale(1.1);
-    box-shadow: 0 0 18px rgba(14,165,233,.28);
-}
-
-.theme-toggle i {
-    font-size: .95rem;
-    pointer-events: none;
-}
-
-.lang-btn {
-    background: var(--card);
-    border: 1px solid var(--brd);
-    color: var(--txt);
-    border-radius: 99px;
-    padding: 7px 15px;
-    font-size: .82rem;
-    font-weight: 600;
-    transition: all .25s ease;
-    cursor: pointer;
-}
-
-.lang-btn:hover {
-    border-color: var(--p);
-    color: var(--p);
-}
-
-.dropdown-item {
     color: var(--txt);
     border-radius: 8px;
-    padding: 8px 14px;
-    font-weight: 500;
-    transition: all .2s ease;
-    background: transparent;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
     cursor: pointer;
-    border: none;
-    width: 100%;
-    text-align: left;
+    transition: all 0.25s ease;
 }
 
-.dropdown-item:hover {
-    background: var(--grad);
-    color: white;
+.lang-switch-btn:hover {
+    border-color: var(--p);
+    color: var(--p);
 }
 
-/* Responsive mobile */
-@media (max-width: 640px) {
-    .navbar-brand {
-        font-size: 1.4rem;
-    }
-    
-    .theme-toggle {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .lang-btn {
-        padding: 5px 12px;
-        font-size: .75rem;
-    }
+/* Background du menu mobile */
+.mobile-menu {
+    background-color: var(--nav);
+    border-color: var(--brd);
+}
+
+/* Ajustement pour la liste ul (enlever les puces) */
+ul.list-unstyled {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
 }

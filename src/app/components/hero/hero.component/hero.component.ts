@@ -28,12 +28,11 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   constructor() {
     // 🎯 Effet réactif : quand la langue change, on met à jour Typed
     effect(() => {
-      const lang = this.lang(); // lecture du signal pour déclencher l'effet
-      // Petit délai pour que le DOM soit à jour
+      const currentLang = this.lang(); // lecture du signal pour déclencher l'effet
+      
+      // Petit délai pour que le DOM soit mis à jour par Angular
       setTimeout(() => {
-        if (this.typedElement) {
-          this.initTyped();
-        }
+        this.initTyped();
       }, 100);
     });
   }
@@ -43,8 +42,13 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroyTyped();
+  }
+
+  private destroyTyped(): void {
     if (this.typedInstance) {
       this.typedInstance.destroy();
+      this.typedInstance = null;
     }
   }
 
@@ -54,16 +58,13 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     const roles = this.heroTexts.roles || [];
     if (!roles.length) return;
 
-    // Détruire l'ancienne instance
-    if (this.typedInstance) {
-      this.typedInstance.destroy();
-      this.typedInstance = null;
-    }
+    // Détruire l'ancienne instance proprement avant de recréer
+    this.destroyTyped();
 
     const element = this.typedElement?.nativeElement;
     if (!element) return;
 
-    // Effacer le contenu avant de recréer
+    // Effacer le contenu avant de recréer pour éviter les artefacts visuels
     element.textContent = '';
 
     // Créer nouvelle instance

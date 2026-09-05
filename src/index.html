@@ -2,235 +2,92 @@
 <html lang="fr" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <title>Francis Lionel | Data Scientist & Full Stack Developer</title>
+    <title>Sikali Tala Francis Lionel | Développeur Full Stack & Data Scientist Cameroun</title>
     <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio de Francis Lionel - Data Scientist, Développeur Full Stack, IA & Innovation">
-    <meta name="keywords" content="Data Scientist, Développeur Full Stack, Laravel, Python, IA, Portfolio">
-    <meta name="author" content="SIKALI TALA Francis Lionel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
+    <!-- SEO LOCAL & MOTS-CLÉS -->
+    <meta name="description" content="Portfolio de Sikali Tala Francis Lionel, Développeur Full Stack (Angular, Laravel) et Data Scientist basé au Cameroun (Douala, Yaoundé). Expert en IA, Python et solutions web sur mesure.">
+    <meta name="keywords" content="Sikali Tala Francis Lionel, Développeur Cameroun, Développeur Douala, Développeur Yaoundé, Data Scientist, Full Stack Developer, Laravel, Angular, Python, IA, Portfolio">
+    <meta name="author" content="Sikali Tala Francis Lionel">
+    <meta name="robots" content="index, follow">
+
+    <!-- OPEN GRAPH (Pour un beau rendu sur WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:title" content="Sikali Tala Francis Lionel | Développeur & Data Scientist">
+    <meta property="og:description" content="Développeur Full Stack & Data Scientist au Cameroun. Je transforme vos données en solutions intelligentes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ton-site.com"> <!-- Remplace par ton vrai domaine plus tard -->
+    <meta property="og:locale" content="fr_CM">
+    <meta property="og:image" content="assets/images/photo.jpg">
+
     <!-- Favicon personnalisé FL -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230ea5e9' rx='20'/%3E%3Ctext x='50' y='68' font-size='50' font-family='Arial, sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3EFL%3C/text%3E%3C/svg%3E">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Google Fonts: Syne + DM Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Bricolage Grotesque + Inter (comme défini dans ton CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- Appliquer le thème sauvegardé immédiatement (évite le flash) -->
+    <!-- Script anti-flash (FOUC) pour le thème sombre/clair -->
     <script>
         (function() {
             const t = localStorage.getItem("theme") || "light";
             document.documentElement.setAttribute("data-bs-theme", t);
         })();
     </script>
-</head>
-<body>
 
-    <!-- ==================================================== -->
-    <!-- PRELOADER "FL" - EXACTEMENT COMME LA VERSION DJANGO -->
-    <!-- ==================================================== -->
+    <!-- SCHEMA.ORG JSON-LD (L'arme fatale pour le SEO Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sikali Tala Francis Lionel",
+      "jobTitle": "Développeur Full Stack & Data Scientist",
+      "url": "https://lionelsikali.vercel.app",
+      "image": "assets/images/photo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Douala",
+        "addressRegion": "Littoral",
+        "addressCountry": "CM"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/tonprofil",
+        "https://github.com/LionelTala"
+      ],
+      "knowsAbout": ["Développement Web", "Data Science", "Intelligence Artificielle", "Laravel", "Angular", "Python"]
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- PRELOADER (Sera masqué par Angular une fois chargé) -->
     <div id="preloader">
         <div class="loader">
             <span>F</span><span>L</span>
         </div>
     </div>
 
-    <!-- ==================================================== -->
     <!-- COMPOSANT RACINE ANGULAR -->
-    <!-- ==================================================== -->
     <app-root></app-root>
 
-    <!-- ==================================================== -->
-    <!-- BIBLIOTHÈQUES JS EXTERNES -->
-    <!-- ==================================================== -->
+    <!-- ======================================================= -->
+    <!-- JS LIBRARIES (Chargées en bas pour la performance) -->
+    <!-- ======================================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    <!-- ==================================================== -->
-    <!-- PRELOADER DISMISS - EN DEHORS DE DOMContentLoaded -->
-    <!-- ==================================================== -->
- 
-
-    <!-- ==================================================== -->
-    <!-- SCRIPT MAÎTRE - IDENTIQUE À LA VERSION DJANGO -->
-    <!-- ==================================================== -->
-    <script>
-        // ======================================================
-        // PORTFOLIO MASTER JS — VERSION STABLE
-        // ======================================================
-
-        let typedInstance = null;
-
-        document.addEventListener("DOMContentLoaded", () => {
-
-            // ======================================================
-            // THEME SYSTEM
-            // ======================================================
-            const themeToggle = document.getElementById("themeToggle");
-            const themeIcon = document.getElementById("themeIcon");
-            const html = document.documentElement;
-
-            function applyTheme(theme) {
-                html.setAttribute("data-bs-theme", theme);
-                localStorage.setItem("theme", theme);
-                if (themeIcon) {
-                    themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
-                }
-            }
-
-            const savedTheme = localStorage.getItem("theme") || "light";
-            applyTheme(savedTheme);
-
-            if (themeToggle) {
-                themeToggle.addEventListener("click", () => {
-                    const current = html.getAttribute("data-bs-theme") || "light";
-                    applyTheme(current === "dark" ? "light" : "dark");
-                });
-            }
-
-            // ======================================================
-            // TRANSLATIONS
-            // ======================================================
-            const translations = {
-                fr: {
-                    nav_home: "Accueil", nav_parcours: "Parcours", nav_skills: "Compétences",
-                    nav_projects: "Projets", nav_contact: "Contact", hero_badge: "Data Scientist • Développeur Full Stack",
-                    hero_desc: "Passionné par la Data Science, l'IA et le développement web moderne. Je transforme les données en solutions intelligentes et les idées en applications performantes.",
-                    btn_contact: "Me contacter", btn_cv: "Télécharger CV", title_parcours: "Mon Parcours",
-                    title_skills: "Mes Compétences", title_projects: "Mes Projets", title_contact: "Contactez-moi",
-                    footer_rights: "Tous droits réservés."
-                },
-                en: {
-                    nav_home: "Home", nav_parcours: "Background", nav_skills: "Skills",
-                    nav_projects: "Projects", nav_contact: "Contact", hero_badge: "Data Scientist • Full Stack Developer",
-                    hero_desc: "Passionate about Data Science, AI and modern web development. I transform data into intelligent solutions and ideas into high-performance applications.",
-                    btn_contact: "Contact Me", btn_cv: "Download CV", title_parcours: "My Background",
-                    title_skills: "My Skills", title_projects: "My Projects", title_contact: "Get in Touch",
-                    footer_rights: "All rights reserved."
-                }
-            };
-
-            function updateTypedText(lang) {
-                const typedElement = document.querySelector(".typed-text");
-                if (!typedElement || typeof Typed === "undefined") return;
-
-                if (typedInstance && typeof typedInstance.destroy === "function") {
-                    typedInstance.destroy();
-                }
-                typedElement.textContent = "";
-
-                const strings = lang === "fr"
-                    ? ["Data Scientist 📊", "Développeur Full Stack 💻", "Expert Laravel ⚡", "Analyste Data 📈", "Créateur de solutions IA 🤖"]
-                    : ["Data Scientist 📊", "Full Stack Developer 💻", "Laravel Expert ⚡", "Data Analyst 📈", "AI Solution Builder 🤖"];
-
-                typedInstance = new Typed(".typed-text", {
-                    strings: strings,
-                    typeSpeed: 55,
-                    backSpeed: 30,
-                    backDelay: 1800,
-                    loop: true,
-                    smartBackspace: true
-                });
-            }
-
-            function applyTranslations(lang) {
-                document.querySelectorAll("[data-translate]").forEach(el => {
-                    const key = el.getAttribute("data-translate");
-                    if (translations[lang] && translations[lang][key]) {
-                        const icon = el.querySelector("i");
-                        el.innerHTML = '';
-                        if (icon) {
-                            el.appendChild(icon);
-                            el.appendChild(document.createTextNode(" " + translations[lang][key]));
-                        } else {
-                            el.textContent = translations[lang][key];
-                        }
-                    }
-                });
-
-                localStorage.setItem("language", lang);
-                const currentLang = document.getElementById("currentLang");
-                if (currentLang) currentLang.textContent = lang.toUpperCase();
-                updateTypedText(lang);
-            }
-
-            document.querySelectorAll(".lang-option").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    applyTranslations(this.dataset.lang);
-                });
-            });
-
-            const savedLanguage = localStorage.getItem("language") || "fr";
-            applyTranslations(savedLanguage);
-
-            // ======================================================
-            // SMOOTH SCROLL
-            // ======================================================
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener("click", function (e) {
-                    const targetId = this.getAttribute("href");
-                    if (targetId === "#") return;
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        e.preventDefault();
-                        const offset = 80;
-                        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                        window.scrollTo({ top, behavior: "smooth" });
-                    }
-                });
-            });
-
-            // ======================================================
-            // BACK TO TOP
-            // ======================================================
-            const backBtn = document.querySelector(".back-to-top");
-            if (backBtn) {
-                window.addEventListener("scroll", () => {
-                    backBtn.classList.toggle("visible", window.scrollY > 500);
-                });
-                backBtn.addEventListener("click", () => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
-            }
-
-            // ======================================================
-            // DYNAMIC YEAR
-            // ======================================================
-            const yearSpan = document.querySelector(".current-year");
-            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-            // ======================================================
-            // GSAP SKILL BARS
-            // ======================================================
-            if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-                gsap.registerPlugin(ScrollTrigger);
-                gsap.utils.toArray(".skill-progress").forEach(bar => {
-                    const targetWidth = bar.dataset.width || "0%";
-                    ScrollTrigger.create({
-                        trigger: bar,
-                        start: "top 88%",
-                        once: true,
-                        onEnter: () => gsap.to(bar, { width: targetWidth, duration: 1.2, ease: "power2.out" })
-                    });
-                });
-            }
-
-            // ======================================================
-            // AOS (si disponible)
-            // ======================================================
-            if (typeof AOS !== "undefined") {
-                AOS.init({ duration: 900, once: true, offset: 60, easing: "ease-out-cubic" });
-            }
-
-        });
-    </script>
 
 </body>
 </html>

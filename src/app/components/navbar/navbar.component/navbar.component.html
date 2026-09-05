@@ -1,18 +1,18 @@
 <!-- ======================================================= -->
-<!-- NAVBAR - IDENTIQUE AU STYLE DJANGO -->
+<!-- NAVBAR - IDENTIQUE AU STYLE DJANGO (Bootstrap 5) -->
 <!-- ======================================================= -->
-<nav class="fixed top-0 left-0 w-full z-50 py-3 transition-all duration-300 glass-nav">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+<nav class="glass-nav fixed-top py-3">
+    <div class="container d-flex align-items-center justify-content-between">
 
         <!-- Logo FL -->
         <a class="navbar-brand" href="#accueil">FL</a>
 
         <!-- Mobile controls -->
-        <div class="flex items-center gap-2 lg:hidden">
+        <div class="d-flex align-items-center gap-2 d-lg-none">
 
             <!-- Langue - bascule instantanée -->
             <button (click)="toggleLanguage()" class="lang-btn" type="button">
-                <i class="fas fa-globe mr-1"></i>
+                <i class="fas fa-globe me-1"></i>
                 <span>{{ lang().toUpperCase() }}</span>
             </button>
 
@@ -28,8 +28,8 @@
         </div>
 
         <!-- Desktop menu -->
-        <div class="hidden lg:flex items-center gap-1">
-            <ul class="flex items-center gap-1">
+        <div class="d-none d-lg-flex align-items-center gap-1">
+            <ul class="d-flex align-items-center gap-1 list-unstyled mb-0">
                 <li><a class="nav-link" [class.active]="isActive('accueil')" href="#accueil">{{ navItems.home }}</a></li>
                 <li><a class="nav-link" [class.active]="isActive('parcours')" href="#parcours">{{ navItems.parcours }}</a></li>
                 <li><a class="nav-link" [class.active]="isActive('competences')" href="#competences">{{ navItems.skills }}</a></li>
@@ -37,9 +37,9 @@
                 <li><a class="nav-link" [class.active]="isActive('contact')" href="#contact">{{ navItems.contact }}</a></li>
             </ul>
 
-            <div class="flex items-center gap-2 ml-4">
+            <div class="d-flex align-items-center gap-2 ms-4">
                 <button (click)="toggleLanguage()" class="lang-btn" type="button">
-                    <i class="fas fa-globe mr-1"></i>
+                    <i class="fas fa-globe me-1"></i>
                     <span>{{ lang().toUpperCase() }}</span>
                 </button>
                 <button (click)="toggleTheme()" class="theme-toggle" aria-label="Changer le thème">
@@ -51,16 +51,15 @@
     </div>
 
     <!-- Mobile dropdown menu -->
-    <div *ngIf="mobileMenuOpen" class="lg:hidden px-4 pt-4 pb-3 border-t mt-3 flex flex-col gap-3"
-         style="border-color: var(--brd); background-color: var(--nav);">
-        <a href="#accueil" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('accueil')" style="color: var(--txt);">{{ navItems.home }}</a>
-        <a href="#parcours" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('parcours')" style="color: var(--txt);">{{ navItems.parcours }}</a>
-        <a href="#competences" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('competences')" style="color: var(--txt);">{{ navItems.skills }}</a>
-        <a href="#projets" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('projets')" style="color: var(--txt);">{{ navItems.projects }}</a>
-        <a href="#contact" (click)="closeMobileMenu()" class="font-semibold text-sm" [class.active]="isActive('contact')" style="color: var(--txt);">{{ navItems.contact }}</a>
-        <div class="flex gap-2 pt-2 border-t" style="border-color: var(--brd);">
-            <button (click)="toggleLanguage(); closeMobileMenu()" class="px-3 py-1 rounded text-xs border" style="border-color: var(--brd); color: var(--txt);">
-                {{ lang() === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR' }}
+    <div *ngIf="mobileMenuOpen" class="d-lg-none px-4 pt-4 pb-3 border-top mt-3 d-flex flex-column gap-3 mobile-menu">
+        <a href="#accueil" (click)="closeMobileMenu()" class="nav-link-mobile" [class.active]="isActive('accueil')">{{ navItems.home }}</a>
+        <a href="#parcours" (click)="closeMobileMenu()" class="nav-link-mobile" [class.active]="isActive('parcours')">{{ navItems.parcours }}</a>
+        <a href="#competences" (click)="closeMobileMenu()" class="nav-link-mobile" [class.active]="isActive('competences')">{{ navItems.skills }}</a>
+        <a href="#projets" (click)="closeMobileMenu()" class="nav-link-mobile" [class.active]="isActive('projets')">{{ navItems.projects }}</a>
+        <a href="#contact" (click)="closeMobileMenu()" class="nav-link-mobile" [class.active]="isActive('contact')">{{ navItems.contact }}</a>
+        <div class="d-flex gap-2 pt-2 border-top">
+            <button (click)="toggleLanguage(); closeMobileMenu()" class="lang-switch-btn">
+                {{ lang() === 'fr' ? '🇬 EN' : '🇫🇷 FR' }}
             </button>
         </div>
     </div>
